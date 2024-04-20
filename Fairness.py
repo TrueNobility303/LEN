@@ -12,15 +12,15 @@ parser = argparse.ArgumentParser(description='Minimax Optimization.')
 parser.add_argument('--training_time',  type=float, default=10.0, help='total training time')
 parser.add_argument('--dataset', type=str, default='adult', help='dataset: adult / lawschool') 
 parser.add_argument('--M', type=float, default=10.0, help='parameter M for ARE')
-parser.add_argument('--LazyM', type=float, default=10.0, help='parameter M for LazyARE')
+parser.add_argument('--LazyM', type=float, default=10.0, help='parameter M for LEAN')
 parser.add_argument('--seed',  type=int, default=42, help='seed of random number')
 parser.add_argument('--eta', type=float, default=1e-1, help='stepsize of extra gradient')
 parser.add_argument('--max_iter',  type=int, default=10, help='maximum iteration for cubic subsolver')
 parser.add_argument('--eps',  type=float, default=1e-8, help='precision for cubic subsolver')
 
 # Parameters in problem setting
-parser.add_argument('--lamb',  type=float, default=0.0)
-parser.add_argument('--gamma',  type=float, default=0.0)
+parser.add_argument('--lamb',  type=float, default=1e-4)
+parser.add_argument('--gamma',  type=float, default=1e-4)
 parser.add_argument('--beta',  type=float, default=0.5)
 args = parser.parse_args()
 
@@ -139,10 +139,10 @@ def EG(oracle, z0, args):
         i = i + 1
     return time_lst_EG, gnorm_lst_EG
 
-# LazyARE 
-def LazyARE(oracle, z0, args, M, m):
-    time_lst_LazyARE = []
-    gnorm_lst_LazyARE = []
+# LEAN
+def LEAN(oracle, z0, args, M, m):
+    time_lst_LEAN = []
+    gnorm_lst_LEAN = []
     ellapse_time = 0.0
     z = z0
     z_half = z0
@@ -187,21 +187,21 @@ def LazyARE(oracle, z0, args, M, m):
         ellapse_time += end - start
         if ellapse_time > args.training_time:
             break
-        time_lst_LazyARE.append(ellapse_time)
+        time_lst_LEAN.append(ellapse_time)
 
         gnorm = torch.linalg.norm(gz_half).item()
-        gnorm_lst_LazyARE.append(gnorm)
+        gnorm_lst_LEAN.append(gnorm)
 
         if i % 10 == 0:
-            print('LazyARE (m=%d): Epoch %d  | gradient norm %.4f' % (m, i, gnorm))
+            print('LEAN (m=%d): Epoch %d  | gradient norm %.4f' % (m, i, gnorm))
         i = i + 1
-    return time_lst_LazyARE, gnorm_lst_LazyARE
+    return time_lst_LEAN, gnorm_lst_LEAN
 
-time_lst_ARE, gnorm_lst_ARE = LazyARE(oracle, z0, args, M=args.M, m=1)
+time_lst_ARE, gnorm_lst_ARE = LEAN(oracle, z0, args, M=args.M, m=1)
 time_lst_EG, gnorm_lst_EG = EG(oracle, z0, args)
 
 d = oracle.d
-time_lst_LazyARE, gnorm_lst_LazyARE = LazyARE(oracle, z0, args, M=args.LazyM, m=d)
+time_lst_LEAN, gnorm_lst_LEAN = LEAN(oracle, z0, args, M=args.LazyM, m=d)
 
 # Plot the results time vs. gnorm 
 plt.rcParams['pdf.fonttype'] = 42
@@ -212,7 +212,7 @@ plt.grid()
 plt.yscale('log')
 plt.plot(time_lst_EG, gnorm_lst_EG, '-.b', label='EG', linewidth=3)
 plt.plot(time_lst_ARE, gnorm_lst_ARE, ':r', label='ARE', linewidth=3)
-plt.plot(time_lst_LazyARE, gnorm_lst_LazyARE, '-k', label='LazyARE', linewidth=3)
+plt.plot(time_lst_LEAN, gnorm_lst_LEAN, '-k', label='LEAN', linewidth=3)
 plt.legend(fontsize=23, loc='lower right')
 plt.tick_params('x',labelsize=21)
 plt.tick_params('y',labelsize=21)
