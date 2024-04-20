@@ -105,13 +105,13 @@ while True:
 
     i = i + 1
 
-# LazyARE 
+# LEAN 
 m = d
 M = rho * m
 
-time_lst_LazyARE = []
-dist_lst_LazyARE = []
-gnorm_lst_LazyARE = []
+time_lst_LEAN = []
+dist_lst_LEAN = []
+gnorm_lst_LEAN = []
 ellapse_time = 0.0
 
 z = z0
@@ -162,19 +162,19 @@ while True:
     ellapse_time += end - start
     if ellapse_time > args.training_time:
         break
-    time_lst_LazyARE.append(ellapse_time)
+    time_lst_LEAN.append(ellapse_time)
 
     dist = np.linalg.norm(z_half - z_star)
-    dist_lst_LazyARE.append(dist)
+    dist_lst_LEAN.append(dist)
     gnorm = np.linalg.norm(gz_half)
-    gnorm_lst_LazyARE.append(gnorm)
+    gnorm_lst_LEAN.append(gnorm)
 
     if i % 10 == 0:
-        print('LazyARE: Epoch %d | distance to saddle %.4f | gradient norm %.4f' % (i, dist, gnorm))
+        print('LEAN: Epoch %d | distance to saddle %.4f | gradient norm %.4f' % (i, dist, gnorm))
     i = i + 1
 
 
-# ARE (LazyARE with m=1) 
+# ARE (LEAN with m=1) 
 m = 1
 M = rho * m
 
@@ -307,7 +307,7 @@ plt.grid()
 plt.yscale('log')
 plt.plot(time_lst_EG, gnorm_lst_EG, '-.b', label='EG', linewidth=3)
 plt.plot(time_lst_ARE, gnorm_lst_ARE, ':r', label='ARE', linewidth=3)
-plt.plot(time_lst_LazyARE, gnorm_lst_LazyARE, '-k', label='LazyARE', linewidth=3)
+plt.plot(time_lst_LEAN, gnorm_lst_LEAN, '-k', label='LEAN', linewidth=3)
 plt.legend(fontsize=23, loc='lower right')
 plt.tick_params('x',labelsize=21)
 plt.tick_params('y',labelsize=21)
@@ -326,7 +326,7 @@ plt.grid()
 plt.yscale('log')
 plt.plot(time_lst_EG, dist_lst_EG, '-.b', label='EG', linewidth=3)
 plt.plot(time_lst_ARE, dist_lst_ARE, ':r', label='ARE', linewidth=3)
-plt.plot(time_lst_LazyARE, dist_lst_LazyARE, '-k', label='LazyARE', linewidth=3)
+plt.plot(time_lst_LEAN, dist_lst_LEAN, '-k', label='LEAN', linewidth=3)
 plt.legend(fontsize=23, loc='lower right')
 plt.tick_params('x',labelsize=21)
 plt.tick_params('y',labelsize=21)
