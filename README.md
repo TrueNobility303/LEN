@@ -1,4 +1,4 @@
-# LazyARE
+# LEAN
 
 ## Synthetic Problem
 
@@ -23,5 +23,5 @@ Download the dataset from the links: [adult](https://github.com/7CCLiu/Partial-Q
 Reproduce the result via
 ```
 python -u Fairness.py --M 10.0 --LazyM 10.0  --dataset adult --training_time 10.0
-python -u Fairness.py --M 10.0 --LazyM 100.0 --dataset lawschool --training_time 500.0
+python -u Fairness.py --M 10.0 --LazyM 100.0 --dataset lawschool --training_time 100.0
 ```
