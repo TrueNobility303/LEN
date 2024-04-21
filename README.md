@@ -1,6 +1,6 @@
 # LEAN
 
-Create a new folder to store the result images
+Beforing runing teh codes, create a new folder to store the result images
 ```
 mkdir img
 ```
