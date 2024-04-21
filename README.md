@@ -1,5 +1,10 @@
 # LEAN
 
+Create a new folder to store the result images
+```
+mkdir img
+```
+
 ## Synthetic Problem
 
 Reproduce the result via
