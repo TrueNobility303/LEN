@@ -1,8 +1,9 @@
-# LEAN
+# LEN
 
-Beforing runing teh codes, create a new folder to store the result images
+Beforing runing the codes, create the following folders if not exist
 ```
 mkdir img
+mkdir result
 ```
 
 ## Synthetic Problem
