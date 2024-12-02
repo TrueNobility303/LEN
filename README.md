@@ -43,4 +43,4 @@ python -u Fairness.py --rho 10.0 --dataset adult --training_time 500.0
 python -u Fairness.py --rho 10.0 --dataset lawschool --training_time 5000.0
 ```
 
-When the program is completed, the results will be stored in the folder `./result`. Then you can plot the figure, for instance, by running `plot_adult.py` or `plot_lawschool.py`.
+When the program is completed, the results will be stored in the folder `./result`. Then you can plot the figure to compare the performance of different algorithms, for instance, by running `plot_adult.py` or `plot_lawschool.py`.
