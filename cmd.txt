@@ -1,5 +1,0 @@
-python -u Synthetic.py --n 100 --training_time 10.0
-python -u Synthetic.py --n 200 --training_time 20.0
-python -u Synthetic.py --n 500 --training_time 100.0
-python -u Fairness.py --M 10.0 --LazyM 10.0  --dataset adult --training_time 10.0
-python -u Fairness.py --M 10.0 --LazyM 100.0 --dataset lawschool --training_time 100.0
