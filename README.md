@@ -1,4 +1,4 @@
-# LEN
+# LEN (Lazy Extra Newton)
 
 Before running the codes, create the following folders if they do not exist
 ```
