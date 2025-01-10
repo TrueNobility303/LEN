@@ -36,11 +36,11 @@ mkdir Data
 ```
 Download the dataset from the links: [adult](https://github.com/7CCLiu/Partial-Quasi-Newton/blob/main/a9a.mat) , [lawschool](https://github.com/7CCLiu/Partial-Quasi-Newton/blob/main/LSTUDENT_DATA1.mat), and put them in the created folder.
 
-Reproduce ours results via
+Reproduce our results via
 ```
 python -u Fairness.py --rho 10.0 --dataset heart --training_time 10.0
 python -u Fairness.py --rho 10.0 --dataset adult --training_time 500.0
 python -u Fairness.py --rho 10.0 --dataset lawschool --training_time 5000.0
 ```
 
-When the program is completed, the results will be stored in the folder `./result`. Then you can plot the figure to compare the performance of different algorithms, for instance, by running `plot_adult.py` or `plot_lawschool.py`.
+When the program is completed, the results will be stored in the folder `./result`.
