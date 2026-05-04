@@ -5,7 +5,7 @@
 
 ## News
 
-* (2026/1) A-LEN [3] was accepted by COLT26.
+* (2026/1) A-LEN [3] was accepted by COLT'26.
 * (2025/7) Minimax-AIPE [2] was accepted by COLT'25 and got **Best Student Paper**!
 * (2025/4) LEN [1] was accected by ICLR'25 and got **Oral** presentation (top 1.8%).
 
