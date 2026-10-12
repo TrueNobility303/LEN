@@ -1,8 +1,4 @@
 
-
-![](Minimax.jpg)
-
-
 ## News
 
 * (2026/1) A-LEN [3] was accepted by COLT'26.
